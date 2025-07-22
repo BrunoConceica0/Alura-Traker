@@ -1,6 +1,11 @@
 import { createApp } from "vue";
-import "./style.css";
 import App from "./App.vue";
-import '@fontawesome/fontawesome-free/css/all.css'
+import "./style.css";
 
-createApp(App).mount("#app");
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faStop, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faStop, faPlay);
+
+createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");

@@ -1,2 +1,19 @@
 @import "tailwindcss";
-@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+
+@theme {
+  --color-bg: #0d3b66;
+}
+@layer components {
+  .header {
+    @apply bg-bg h-full w-full md:p-[2.5rem] md:h-auto;
+  }
+  .box-form {
+    @apply flex flex-col shadow-2xl w-full rounded;
+  }
+  .btnBox {
+    @apply text-sm border border-gray-500 rounded px-2 py-1 cursor-pointer flex items-center space-x-2 active:scale-95 transition-all duration-200;
+  }
+  .input-tasks {
+    @apply w-full text-sm placeholder-gray-400 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-900 focus:border-gray-700;
+  }
+}
