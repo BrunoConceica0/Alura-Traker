@@ -1,11 +1,24 @@
 <template>
   <div id="app">
-    <h1 class="text-6xl">Ola</h1>
+    <main class="flex flex-wrap gap-0">
+      <div class="flex w-1/4">
+        <Sidebar />
+      </div>
+      <div class="flex w-3/4">
+        <Form />
+      </div>
+    </main>
   </div>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import { defineComponent } from "vue";
+import Sidebar from "./components/Sidebar.vue";
+import Form from "./components/Form.vue";
+export default defineComponent({
+  name: "App",
+  components: { Sidebar, Form },
+});
 </script>
 
-<style></style>
+<style scoped></style>
