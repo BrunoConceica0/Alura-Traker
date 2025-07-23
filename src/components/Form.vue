@@ -11,11 +11,7 @@
       />
       <div class="flex flex-col justify-center ml-4">
         <div class="flex items-center justify-between">
-          <section>
-            <strong class="text-sm text-gray-700 mx-4">{{
-              timerString
-            }}</strong>
-          </section>
+          <Stopwatch :timerString="timerString" />
           <div class="space-x-1 flex flex-row">
             <button
               @click="startTimer"
@@ -43,24 +39,26 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
+import Stopwatch from "./Stopwatch.vue";
 
 export default defineComponent({
+  components: { Stopwatch },
   name: "Form",
   setup() {
     const timer = ref(0);
-    let setIntervalId: number | null = null;
+    let stopwatch: number | null = null;
 
     function startTimer() {
-      if (setIntervalId !== null) return; // já está rodando
-      setIntervalId = setInterval(() => {
+      if (stopwatch !== null) return; // já está rodando
+      stopwatch = setInterval(() => {
         timer.value++;
       }, 1000);
     }
 
     function stopTimer() {
-      if (setIntervalId !== null) {
-        clearInterval(setIntervalId);
-        setIntervalId = null;
+      if (stopwatch !== null) {
+        clearInterval(stopwatch);
+        stopwatch = null;
       }
     }
 

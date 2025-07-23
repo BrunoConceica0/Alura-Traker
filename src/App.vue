@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <main class="flex flex-wrap gap-0">
-      <div class="flex w-1/4">
+      <div class="flex w-1/4 h-screen">
         <Sidebar />
       </div>
-      <div class="flex w-3/4">
+      <div class="flex w-3/4 h-min">
         <Form />
       </div>
     </main>
