@@ -8,74 +8,30 @@
         type="text"
         class="input-tasks"
         placeholder="Qual tarefa você deseja iniciar?"
+        v-model="task"
       />
       <div class="flex flex-col justify-center ml-4">
-        <div class="flex items-center justify-between">
-          <Stopwatch :timerString="timerString" />
-          <div class="space-x-1 flex flex-row">
-            <button
-              @click="startTimer"
-              type="button"
-              class="btnBox text-gray-800"
-            >
-              <font-awesome-icon icon="play" />
-              <span>play</span>
-            </button>
-
-            <button
-              @click="stopTimer"
-              type="button"
-              class="btnBox text-gray-800"
-            >
-              <font-awesome-icon icon="stop" />
-              <span>stop</span>
-            </button>
-          </div>
-        </div>
+        <Timer @timer-finished="handleTimerFinished" />
       </div>
     </form>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
-import Stopwatch from "./Stopwatch.vue";
+import { defineComponent, ref } from "vue";
+import Timer from "./Timer.vue";
 
 export default defineComponent({
-  components: { Stopwatch },
+  components: { Timer },
   name: "Form",
   setup() {
-    const timer = ref(0);
-    let stopwatch: number | null = null;
-
-    function startTimer() {
-      if (stopwatch !== null) return; // já está rodando
-      stopwatch = setInterval(() => {
-        timer.value++;
-      }, 1000);
-    }
-
-    function stopTimer() {
-      if (stopwatch !== null) {
-        clearInterval(stopwatch);
-        stopwatch = null;
-      }
-    }
-
-    const timerString = computed(() => {
-      const h = Math.floor(timer.value / 3600)
-        .toString()
-        .padStart(2, "0");
-      const m = Math.floor((timer.value % 3600) / 60)
-        .toString()
-        .padStart(2, "0");
-      const s = (timer.value % 60).toString().padStart(2, "0");
-      return `${h}:${m}:${s}`;
-    });
-
-    return { timer, startTimer, stopTimer, timerString };
+    const task = ref("");
+    const handleTimerFinished = (timer: number): void => {
+      task.value = "";
+      console.log(`Timer finished after ${timer} seconds`);
+      console.log(task.value);
+    };
+    return { handleTimerFinished, task };
   },
 });
 </script>
-
-<style scoped></style>
