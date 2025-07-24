@@ -5,7 +5,7 @@
       <button
         @click="startTimer"
         type="button"
-        class="btnBox text-gray-800"
+        class="btnBox text-gray-800 hover:bg-yellow-200 focus:outline-none"
         :disabled="isRunning"
         :class="{ 'opacity-50 cursor-not-allowed': isRunning }"
       >
@@ -16,7 +16,7 @@
       <button
         @click="stopTimer"
         type="button"
-        class="btnBox text-gray-800"
+        class="btnBox text-gray-800 hover:bg-red-600 hover:text-white focus:outline-none"
         :disabled="!isRunning"
         :class="{ 'opacity-50 cursor-not-allowed': !isRunning }"
       >
