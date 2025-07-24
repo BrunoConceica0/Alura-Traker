@@ -1,6 +1,8 @@
 <template>
   <section>
-    <strong class="text-sm text-gray-700 mx-4">{{ timerString }}</strong>
+    <strong class="text-sm text-gray-700 mx-4 dark:text-white">{{
+      timerString
+    }}</strong>
   </section>
 </template>
 
