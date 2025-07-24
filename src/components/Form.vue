@@ -1,5 +1,5 @@
 <template>
-  <div class="box-form">
+  <div class="box">
     <form
       class="p-4 grid grid-cols-[3fr_1fr]"
       aria-label="Formulário para criação de uma nova tarefa."
@@ -24,12 +24,15 @@ import Timer from "./Timer.vue";
 export default defineComponent({
   components: { Timer },
   name: "Form",
-  setup() {
+  emits: ["isSalveTask"],
+  setup(_, { emit }) {
     const task = ref("");
     const handleTimerFinished = (timer: number): void => {
+      emit("isSalveTask", {
+        durationInSeconds: timer,
+        description: task.value,
+      });
       task.value = "";
-      console.log(`Timer finished after ${timer} seconds`);
-      console.log(task.value);
     };
     return { handleTimerFinished, task };
   },
