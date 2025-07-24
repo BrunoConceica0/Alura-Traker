@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
-@theme {
+:root {
   --color-bg: #0d3b66;
 }
+
 @layer components {
   .header {
-    @apply bg-bg h-full w-full md:p-[2.5rem] md:h-auto;
+    @apply bg-[var(--color-bg)] h-full w-full md:p-[2.5rem] md:h-auto flex flex-col items-center;
   }
   .box {
     @apply flex shadow w-full rounded border-b-4 py-6 px-2 border-gray-200;
@@ -15,5 +16,37 @@
   }
   .input-tasks {
     @apply w-full text-sm placeholder-gray-400 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-gray-900 focus:border-gray-700;
+  }
+  .task {
+    @apply font-bold bg-[#faf0ca] w-auto rounded-md m-[1.25rem];
+  }
+  .btn-toggle-theme {
+    @apply text-sm px-4 py-2 m-5 rounded-md font-semibold cursor-pointer 
+           bg-gray-200 text-gray-800 border border-gray-400 
+           hover:bg-gray-300 transition-all duration-200;
+  }
+
+  /* Tema escuro */
+  .theme-dark {
+    @apply bg-gray-900 text-white;
+  }
+
+  .theme-dark .header {
+    @apply bg-gray-800;
+  }
+
+  .theme-dark .box {
+    @apply bg-gray-700 border-gray-500 text-white;
+  }
+
+  .theme-dark .btnBox {
+    @apply bg-gray-300 text-white border-gray-400;
+  }
+
+  .theme-dark .input-tasks {
+    @apply bg-gray-800 border-gray-600 text-white placeholder-gray-300 focus:ring-white focus:border-white;
+  }
+  .theme-dark .btn-toggle-theme {
+    @apply dark:bg-gray-700 dark:text-white dark:border-gray-500 dark:hover:bg-gray-600;
   }
 }
