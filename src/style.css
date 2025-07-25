@@ -20,6 +20,9 @@
   .task {
     @apply font-bold bg-[#faf0ca] w-auto rounded-md m-[1.25rem];
   }
+  .stopwatchText {
+    @apply text-sm text-gray-700 mx-4;
+  }
   .btn-toggle-theme {
     @apply text-sm px-4 py-2 m-5 rounded-md font-semibold cursor-pointer 
            bg-gray-200 text-gray-800 border border-gray-400 
@@ -48,5 +51,8 @@
   }
   .theme-dark .btn-toggle-theme {
     @apply dark:bg-gray-700 dark:text-white dark:border-gray-500 dark:hover:bg-gray-600;
+  }
+  .theme-dark .stopwatchText {
+    @apply text-white transition duration-200 ease-in-out;
   }
 }
