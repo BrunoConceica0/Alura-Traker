@@ -38,6 +38,9 @@ Este aplicativo funciona como um **cronômetro de tarefas**, permitindo adiciona
 - `utils/FormatTime.ts`: função para formatar tempo
 - `interfaces/ITask.ts`: tipagem da tarefa
 
+##  🤳 Demostração 
+![Demonstração do projeto](./public/demonstration.png)
+
 ## 🧪 Executar localmente
 
 ```bash
@@ -52,15 +55,17 @@ npm run build
 
 ## 🖼️ Demonstração
 
-![Demonstração do projeto](./public/demonstration.png)
-
-
-
-
-#Obs
-# Parar o servidor de desenvolvimento: O primeiro passo é interromper o servidor que você estava usando durante o desenvolvimento (npm run serve).
-# Analisar os scripts no package.json: O arquivo package.json contém scripts que automatizam tarefas como iniciar o servidor de desenvolvimento (serve), compilar a aplicação para produção (build) e executar linters (lint).
-# Executar o script build: Para compilar a aplicação, você deve executar o comando npm run build. Esse script irá processar seus componentes e gerar os arquivos otimizados para produção na pasta dist com  (npm i -g http-server).
-# Testar a aplicação compilada: Para verificar se a compilação foi bem-sucedida, você pode usar um servidor HTTP simples como o (http-server) para servir os arquivos da pasta dist localmente.
-# Entender a otimização para produção: A versão compilada da aplicação é minificada e otimizada para melhor desempenho em produção, removendo espaços e comentários desnecessários.
 ```
+
+<!--
+Obs
+
+ Parar o servidor de desenvolvimento: O primeiro passo é interromper o servidor que você estava usando durante o desenvolvimento (npm run serve).
+
+Analisar os scripts no package.json: O arquivo package.json contém scripts que automatizam tarefas como iniciar o servidor de desenvolvimento (serve), compilar a aplicação para produção (build) e executar linters (lint).
+
+Executar o script build: Para compilar a aplicação, você deve executar o comando npm run build. Esse script irá processar seus componentes e gerar os arquivos otimizados para produção na pasta dist com (npm i -g http-server).
+
+Testar a aplicação compilada: Para verificar se a compilação foi bem-sucedida, você pode usar um servidor HTTP simples como o (http-server) para servir os arquivos da pasta dist localmente.
+
+Entender a otimização para produção: A versão compilada da aplicação é minificada e otimizada para melhor desempenho em produção, removendo espaços e comentários desnecessários. -->
