@@ -5,11 +5,21 @@ import router from "./router";
 
 // FontAwesome
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faStop, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStop,
+  faPlay,
+  faListCheck,
+  faLaptopCode,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 // Adicionando ícones individuais à biblioteca
-library.add(faStop as any, faPlay as any);
+library.add(
+  faStop as any,
+  faPlay as any,
+  faListCheck as any,
+  faLaptopCode as any
+);
 
 // Registrando o componente global
 createApp(App)

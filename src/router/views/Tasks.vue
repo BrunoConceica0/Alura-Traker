@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-3/4 h-min">
+  <div class="container">
     <Form @isSalveTask="salveTask" />
     <div v-if="listTasks.length">
       <TasksItems
