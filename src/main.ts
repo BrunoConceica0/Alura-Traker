@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./style.css";
 import router from "./router";
+import { store, key } from "./store"; // importa sua store e key
 
 // FontAwesome
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -23,6 +24,7 @@ library.add(
 
 // Registrando o componente global
 createApp(App)
+  .use(store, key) // Usando a store com a chave
   .use(router)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

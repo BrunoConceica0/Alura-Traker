@@ -5,6 +5,9 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": ["@fortawesome/fontawesome-svg-core"]
+    "types": ["vite/client", "@fortawesome/fontawesome-svg-core"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
