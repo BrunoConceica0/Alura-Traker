@@ -45,7 +45,7 @@ export default defineComponent({
   emits: ["isSalveTask"],
   setup(_, { emit }) {
     const task = ref("");
-    const IdProject = ref("");
+    const IdProject = ref("")
 
     // Importa a store do Vuex
     const store = useStore(key);
