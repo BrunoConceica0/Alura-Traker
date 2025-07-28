@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-center ml-4">
     <select
       :value="idProject"
-      @change="updateProject()"
+      @change="updateProject(($event.target as HTMLSelectElement).value)"
       class="w-full px-4 py-2 border-2 border-blue-500 rounded-md text-gray-700 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-600 bg-white appearance-none cursor-pointer"
     >
       <option value="">Selecione um projeto</option>
@@ -24,6 +24,7 @@ export default defineComponent({
     idProject: {
       type: String,
       required: true,
+      default: "",
     },
   },
   emits: ["update:idProject"],

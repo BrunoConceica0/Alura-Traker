@@ -23,9 +23,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import Table from "../../components/Table.vue";
-import type IProjects from "../../interfaces/IProjects";
+import { useStore } from "../../store/index";
 export default defineComponent({
   name: "Projects",
   components: { Table },
@@ -33,21 +33,26 @@ export default defineComponent({
   setup() {
     const nameProject = ref("");
     // Lista de projetos
-    const listProjects = ref<IProjects[]>([]);
+
+    const store = useStore();
 
     const salveProject = () => {
-      const project: IProjects = {
-        id: new Date().toISOString(),
-        name: nameProject.value,
-      };
-      console.log("Projeto salvo:", project);
-      nameProject.value = "";
-      // Adiciona o projeto à lista
-      listProjects.value.push(project);
-      return project;
+      if (!nameProject.value.trim()) {
+        alert("O nome do projeto não pode estar vazio!");
+        return;
+      } else {
+        store.commit("ADD_PROJECT", nameProject.value);
+        nameProject.value = "";
+      }
     };
 
-    return { nameProject, salveProject, listProjects };
+    return {
+      nameProject,
+      salveProject,
+      store,
+      // A lista de projetos sem do IProdutos que é tipado com mutante vuex, usando o store.commit("ADD_PROJECT", nameProject.value);
+      listProjects: computed(() => store.state.projects),
+    };
   },
 });
 </script>
