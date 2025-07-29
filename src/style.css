@@ -24,7 +24,7 @@
   .btnBox {
     @apply text-sm border border-gray-500 rounded px-2 py-1 cursor-pointer flex items-center space-x-2 active:scale-95 transition-all duration-200 justify-center;
   }
-  .btn-delete{
+  .btn-delete {
     @apply bg-red-600 hover:bg-red-700 text-white cursor-pointer font-semibold py-2 px-4 rounded-md transition duration-300;
   }
 
@@ -92,6 +92,56 @@
   /* Selector Project */
   .selector-container {
     @apply w-full px-3 sm:px-4 py-2 border-2 focus:outline-none appearance-none text-base cursor-pointer;
+  }
+  /* Notificações */
+  .notification-container {
+    @apply p-8 absolute right-0 w-[300px] space-y-4 z-10;
+  }
+
+  .notification {
+    @apply rounded-md shadow border animate-slide-in;
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+  }
+
+  /* Título e texto */
+  .notification-title {
+    @apply font-semibold px-4 py-2 rounded-t-md;
+  }
+
+  .notification-text {
+    @apply px-4 py-3;
+  }
+
+  /* Tipos de notificação */
+  .notification-success {
+    @apply border-green-300 bg-green-100;
+  }
+  .notification-success .notification-title {
+    @apply bg-green-200 text-green-800;
+  }
+  .notification-success .notification-text {
+    @apply text-green-700;
+  }
+
+  .notification-warning {
+    @apply border-yellow-300 bg-yellow-100;
+  }
+  .notification-warning .notification-title {
+    @apply bg-yellow-200 text-yellow-800;
+  }
+  .notification-warning .notification-text {
+    @apply text-yellow-700;
+  }
+
+  .notification-error {
+    @apply border-red-300 bg-red-100;
+  }
+  .notification-error .notification-title {
+    @apply bg-red-200 text-red-800;
+  }
+  .notification-error .notification-text {
+    @apply text-red-700;
   }
 
   /* Dark Theme */

@@ -7,6 +7,7 @@
       <div class="flex w-1/4 h-screen">
         <Sidebar @theme-changed="themeChanged" />
       </div>
+      <Notification />
       <router-view />
     </main>
   </div>
@@ -14,11 +15,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import Notification from "./components/Notification.vue";
 import Sidebar from "./components/Sidebar.vue";
 
 export default defineComponent({
   name: "App",
-  components: { Sidebar },
+  components: { Sidebar, Notification },
 
   setup() {
     const themeDarkActive = ref(false);

@@ -41,7 +41,8 @@
 import { defineComponent } from "vue";
 import type IProjects from "../interfaces/IProjects";
 import { store } from "../store/index";
-import { DELETE_PROJECT } from "../store/type-mutations";
+import { DELETE_PROJECT, NOTIFICATION } from "../store/type-mutations";
+import { typeNotification } from "../interfaces/INotificationMessage";
 export default defineComponent({
   name: "Table",
   props: {
@@ -54,6 +55,11 @@ export default defineComponent({
   setup() {
     const deleteProject = (id: string) => {
       store.commit(DELETE_PROJECT, id);
+      store.commit(NOTIFICATION, {
+        title: "Projeto deletado",
+        text: "Pronto! Seu projeto foi removido com sucesso.",
+        type: typeNotification.SUCCESS,
+      });
     };
 
     return { deleteProject };
