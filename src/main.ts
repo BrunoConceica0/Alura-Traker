@@ -13,6 +13,7 @@ import {
   faLaptopCode,
   faPlus,
   faPencil,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -23,7 +24,8 @@ library.add(
   faListCheck as any,
   faLaptopCode as any,
   faPlus as any,
-  faPencil as any
+  faPencil as any,
+  faTrash as any
 );
 
 // Registrando o componente global
