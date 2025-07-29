@@ -1,10 +1,11 @@
 <template>
-  <div class="table_container">
+  <div class="">
     <table class="table_main">
       <thead class="bg-gray-100">
         <tr>
           <th class="table-th">Projeto</th>
           <th class="table-th">ID</th>
+          <th class="table-th">Acões</th>
         </tr>
       </thead>
       <tbody class="table-thead">
@@ -15,6 +16,13 @@
         >
           <td class="table-td">{{ project.name }}</td>
           <td class="table-td">{{ project.id }}</td>
+          <td class="table-td">
+            <router-link
+              :to="{ name: 'Edit project', params: { id: project.id } }"
+            >
+              <span> <font-awesome-icon icon="fa-pencil" /> </span
+            ></router-link>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -11,6 +11,8 @@ import {
   faPlay,
   faListCheck,
   faLaptopCode,
+  faPlus,
+  faPencil,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -19,7 +21,9 @@ library.add(
   faStop as any,
   faPlay as any,
   faListCheck as any,
-  faLaptopCode as any
+  faLaptopCode as any,
+  faPlus as any,
+  faPencil as any
 );
 
 // Registrando o componente global
