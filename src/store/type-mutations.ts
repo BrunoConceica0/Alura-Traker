@@ -1,3 +1,4 @@
 export const DELETE_PROJECT = "DELETE_PROJEC";
 export const CHANGE_PROJECT = "CHANGE_PROJECT";
 export const ADD_PROJECT = "ADD_PROJECT";
+export const NOTIFICATION = "NOTIFICATION";

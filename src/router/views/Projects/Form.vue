@@ -23,7 +23,12 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useStore } from "../../../store/index";
 import { useRouter } from "vue-router";
 import type IProjects from "../../../interfaces/IProjects";
-import { ADD_PROJECT, CHANGE_PROJECT } from "../../../store/type-mutations";
+import {
+  ADD_PROJECT,
+  CHANGE_PROJECT,
+  NOTIFICATION,
+} from "../../../store/type-mutations";
+import { typeNotification } from "../../../interfaces/INotificationMessage";
 export default defineComponent({
   name: "Form",
   props: {
@@ -38,8 +43,11 @@ export default defineComponent({
     const nameProject = ref("");
     const salveProject = () => {
       if (!nameProject.value.trim()) {
-        alert("O nome do projeto não pode estar vazio!");
-        return;
+        store.commit("NOTIFICATION", {
+          title: "Campo obrigatório",
+          text: "O nome do projeto não pode estar vazio!",
+          type: typeNotification.FAILURE,
+        });
       } else {
         if (props.id) {
           // Editar Projeto
@@ -51,6 +59,11 @@ export default defineComponent({
           store.commit(ADD_PROJECT, nameProject.value);
           nameProject.value = "";
         }
+        store.commit(NOTIFICATION, {
+          title: "Novo Projeto salvo",
+          text: "Pronto! Seu projeto já esta disponível",
+          type: typeNotification.SUCCESS,
+        });
         router.push("/projects");
       }
     };
@@ -59,6 +72,11 @@ export default defineComponent({
         const project = (store.state.projects as IProjects[]).find(
           (project) => project.id === props.id
         );
+        store.commit(NOTIFICATION, {
+          title: "Cuidado",
+          text: "Seu projeto esta sendo editado!",
+          type: typeNotification.ATTENTION,
+        });
         nameProject.value = project?.name || "";
       }
     });
