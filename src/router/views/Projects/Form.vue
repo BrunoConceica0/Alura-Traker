@@ -23,6 +23,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useStore } from "../../../store/index";
 import { useRouter } from "vue-router";
 import type IProjects from "../../../interfaces/IProjects";
+import { ADD_PROJECT, CHANGE_PROJECT } from "../../../store/type-mutations";
 export default defineComponent({
   name: "Form",
   props: {
@@ -42,12 +43,12 @@ export default defineComponent({
       } else {
         if (props.id) {
           // Editar Projeto
-          store.commit("CHANGE_PROJECT", {
+          store.commit(CHANGE_PROJECT, {
             id: props.id,
             name: nameProject.value,
           });
         } else {
-          store.commit("ADD_PROJECT", nameProject.value);
+          store.commit(ADD_PROJECT, nameProject.value);
           nameProject.value = "";
         }
         router.push("/projects");

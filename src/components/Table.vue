@@ -17,11 +17,19 @@
           <td class="table-td">{{ project.name }}</td>
           <td class="table-td">{{ project.id }}</td>
           <td class="table-td">
-            <router-link
-              :to="{ name: 'Edit project', params: { id: project.id } }"
-            >
-              <span> <font-awesome-icon icon="fa-pencil" /> </span
-            ></router-link>
+            <div class="flex gap-5 items-center">
+              <router-link
+                :to="{ name: 'Edit project', params: { id: project.id } }"
+              >
+                <span>
+                  <font-awesome-icon icon="fa-pencil" class="icon" /> </span
+              ></router-link>
+              <button class="btn-delete" @click="deleteProject(project.id)">
+                <span>
+                  <font-awesome-icon icon="fa-trash" class="icon" />
+                </span>
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -32,6 +40,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import type IProjects from "../interfaces/IProjects";
+import { store } from "../store/index";
+import { DELETE_PROJECT } from "../store/type-mutations";
 export default defineComponent({
   name: "Table",
   props: {
@@ -39,6 +49,14 @@ export default defineComponent({
       type: Array as () => IProjects[],
       required: true,
     },
+  },
+
+  setup() {
+    const deleteProject = (id: string) => {
+      store.commit(DELETE_PROJECT, id);
+    };
+
+    return { deleteProject };
   },
 });
 </script>
