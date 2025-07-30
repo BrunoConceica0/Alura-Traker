@@ -1,19 +1,23 @@
 # ⏱️ Alura Tracker
 
-Projeto desenvolvido durante o curso da **Alura**, com o objetivo de aplicar conceitos práticos de Vue.js 3 com TypeScript.
+Projeto desenvolvido durante o curso da **Alura**, com o objetivo de aplicar conceitos práticos de **Vue.js 3 com TypeScript**.
 
 Este aplicativo funciona como um **cronômetro de tarefas**, permitindo adicionar atividades e acompanhar o tempo gasto em cada uma.
 
+---
+
 ## 🚀 Funcionalidades
 
-- ✅ Cadastro de tarefas com descrição
-- ✅ Temporizador para cada tarefa
-- ✅ Exibição do tempo formatado (mm:ss)
-- ✅ Lista de tarefas atualizável
-- ✅ Componentização com Vue 3 + Composition API
-- ✅ Tipagem com TypeScript (`ITask`)
-- ✅ Estilização com Tailwind CSS
-- ✅ Ícones com Font Awesome
+✅ Cadastro de tarefas com descrição
+✅ Temporizador individual para cada tarefa
+✅ Exibição do tempo formatado (mm:ss)
+✅ Lista dinâmica de tarefas com atualização em tempo real
+✅ Componentização utilizando Vue 3 + Composition API
+✅ Tipagem forte com TypeScript (ITask) para maior segurança
+✅ Estilização moderna e responsiva com Tailwind CSS
+✅ Ícones integrados com Font Awesome para melhor UI/UX
+
+---
 
 ## 📦 Tecnologias utilizadas
 
@@ -22,13 +26,17 @@ Este aplicativo funciona como um **cronômetro de tarefas**, permitindo adiciona
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Font Awesome](https://fontawesome.com/)
-- [Vercel](https://vercel.com/) (deploy)
+- [Vercel](https://vercel.com/) – Deploy
+
+---
 
 ## 🔗 Acesse o projeto online
 
 👉 [Clique aqui para acessar o site publicado na Vercel](https://alura-traker-six.vercel.app)
 
-> Substitua o link acima com a URL gerada pela Vercel para o seu projeto.
+> Substitua o link acima se o seu domínio no Vercel for diferente.
+
+---
 
 ## 📁 Estrutura dos Componentes
 
@@ -38,7 +46,8 @@ Este aplicativo funciona como um **cronômetro de tarefas**, permitindo adiciona
 - `utils/FormatTime.ts`: função para formatar tempo
 - `interfaces/ITask.ts`: tipagem da tarefa
 
-##  🤳 Demostração 
+## 🤳 Demostração
+
 ![Demonstração do projeto](./public/demonstration.png)
 
 ## 🧪 Executar localmente

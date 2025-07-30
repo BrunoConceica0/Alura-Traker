@@ -1,4 +1,4 @@
-import type IProjects from "../interfaces/IProjects";
+import type IProjects from "@/interfaces/IProjects";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     listProjects: {
         type: () => IProjects[];

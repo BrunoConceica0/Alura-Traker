@@ -1,5 +1,5 @@
-import type ITask from "../interfaces/ITask";
-import formatTime from "../utils/FormatTime";
+import type ITask from "@/interfaces/ITask";
+import formatTime from "@/utils/FormatTime";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
     task: {
         type: () => ITask;
