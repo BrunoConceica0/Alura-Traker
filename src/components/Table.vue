@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useNotify } from "../composable/notify";
+import { useNotify } from "../hooks/notify";
 import { typeNotification } from "../interfaces/INotificationMessage";
 import { store } from "../store";
 import { DELETE_PROJECT } from "../store/type-mutations";

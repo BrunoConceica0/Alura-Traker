@@ -1,8 +1,10 @@
 <template>
   <TaskEmpyt>
     <div class="task box">
-      <div class="flex"></div>
       <div class="w-7/12">{{ task.description || "Tarefa sem descrição" }}</div>
+      <div class="flex w-1/2">
+        {{ task.projects?.name || "N/D" }}
+      </div>
       <div>
         <Stopwatch :timerString="formatTime(task.durationInSeconds)" />
       </div>
