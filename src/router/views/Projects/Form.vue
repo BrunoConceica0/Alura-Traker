@@ -20,12 +20,12 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
-import { useStore } from "../../../store/index";
+import { useStore } from "@/store/index";
 import { useRouter } from "vue-router";
-import type IProjects from "../../../interfaces/IProjects";
-import { useNotify } from "../../../hooks/notify";
-import { ADD_PROJECT, CHANGE_PROJECT } from "../../../store/type-mutations";
-import { typeNotification } from "../../../interfaces/INotificationMessage";
+import type IProjects from "@/interfaces/IProjects";
+import { useNotify } from "@/hooks/notify";
+import { ADD_PROJECT, CHANGE_PROJECT } from "@/store/type-mutations";
+import { typeNotification } from "@/interfaces/INotificationMessage";
 export default defineComponent({
   name: "Form",
   props: {

@@ -1,18 +1,29 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./types",
+    "noEmit": false,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "types": ["vite/client", "vue"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"],
-      "vuex": ["node_modules/vuex/types/index.d.ts"]
-    },
-    "types": ["vite/client", "@fortawesome/fontawesome-svg-core"],
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+      "@/*": ["*"]
+    }
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/types/**/*.d.ts"
   ]
 }

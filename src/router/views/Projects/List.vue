@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import Table from "../../../components/Table.vue";
-import Form from "../../../router/views/Projects/Form.vue";
-import { useStore } from "../../../store/index";
+import Table from "@/components/Table.vue";
+import Form from "@/router/views/Projects/Form.vue";
+import { useStore } from "@/store/index";
 
 export default defineComponent({
   name: "List",

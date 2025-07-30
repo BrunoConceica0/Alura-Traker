@@ -15,8 +15,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Stopwatch from "./Stopwatch.vue";
-import type ITask from "../interfaces/ITask";
-import formatTime from "../utils/FormatTime";
+import type ITask from "@/interfaces/ITask";
+import formatTime from "@/utils/FormatTime";
 import TaskEmpyt from "./TaskEmpyt.vue";
 
 export default defineComponent({

@@ -39,11 +39,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useNotify } from "../hooks/notify";
-import { typeNotification } from "../interfaces/INotificationMessage";
-import { store } from "../store";
-import { DELETE_PROJECT } from "../store/type-mutations";
-import type IProjects from "../interfaces/IProjects";
+import { useNotify } from "@/hooks/notify";
+import { typeNotification } from "@/interfaces/INotificationMessage";
+import { store } from "@/store";
+import { DELETE_PROJECT } from "@/store/type-mutations";
+import type IProjects from "@/interfaces/IProjects";
 
 export default defineComponent({
   props: {

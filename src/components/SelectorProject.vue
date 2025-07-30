@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import { useStore } from "vuex";
-import { key } from "../store";
+import { key } from "@/store";
 
 export default defineComponent({
   name: "SelectorProject",
