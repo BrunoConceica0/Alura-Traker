@@ -39,27 +39,29 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import type IProjects from "../interfaces/IProjects";
-import { store } from "../store/index";
-import { DELETE_PROJECT, NOTIFICATION } from "../store/type-mutations";
+import { useNotify } from "../composable/notify";
 import { typeNotification } from "../interfaces/INotificationMessage";
+import { store } from "../store";
+import { DELETE_PROJECT } from "../store/type-mutations";
+import type IProjects from "../interfaces/IProjects";
+
 export default defineComponent({
-  name: "Table",
   props: {
     listProjects: {
       type: Array as () => IProjects[],
       required: true,
     },
   },
-
   setup() {
+    const { notify } = useNotify();
+
     const deleteProject = (id: string) => {
       store.commit(DELETE_PROJECT, id);
-      store.commit(NOTIFICATION, {
-        title: "Projeto deletado",
-        text: "Pronto! Seu projeto foi removido com sucesso.",
-        type: typeNotification.SUCCESS,
-      });
+      notify(
+        typeNotification.SUCCESS,
+        "Projeto Deletado!",
+        "O Projeto foi deletado com sucesso"
+      );
     };
 
     return { deleteProject };

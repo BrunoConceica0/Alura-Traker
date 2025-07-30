@@ -23,6 +23,7 @@
     "yarn": "^1.22.22"
   },
   "devDependencies": {
+    "@types/node": "^24.1.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
     "tailwindcss": "^4.1.11",

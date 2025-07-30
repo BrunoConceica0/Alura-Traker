@@ -99,7 +99,7 @@
   }
 
   .notification {
-    @apply rounded-md shadow border animate-slide-in;
+    @apply rounded-md shadow border;
     animation-duration: 0.4s;
     animation-fill-mode: both;
   }

@@ -23,11 +23,8 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useStore } from "../../../store/index";
 import { useRouter } from "vue-router";
 import type IProjects from "../../../interfaces/IProjects";
-import {
-  ADD_PROJECT,
-  CHANGE_PROJECT,
-  NOTIFICATION,
-} from "../../../store/type-mutations";
+import { useNotify } from "../../../composable/notify";
+import { ADD_PROJECT, CHANGE_PROJECT } from "../../../store/type-mutations";
 import { typeNotification } from "../../../interfaces/INotificationMessage";
 export default defineComponent({
   name: "Form",
@@ -39,15 +36,16 @@ export default defineComponent({
   setup(props) {
     const store = useStore();
     const router = useRouter();
+    const { notify } = useNotify();
 
     const nameProject = ref("");
     const salveProject = () => {
       if (!nameProject.value.trim()) {
-        store.commit("NOTIFICATION", {
-          title: "Campo obrigatório",
-          text: "O nome do projeto não pode estar vazio!",
-          type: typeNotification.FAILURE,
-        });
+        notify(
+          typeNotification.FAILURE,
+          "Campo obrigatório",
+          "O nome do projeto não pode estar vazio!"
+        );
       } else {
         if (props.id) {
           // Editar Projeto
@@ -55,15 +53,20 @@ export default defineComponent({
             id: props.id,
             name: nameProject.value,
           });
+          notify(
+            typeNotification.SUCCESS,
+            "Projeto Editado",
+            "Seu projeto foi editado com sucesso!"
+          );
         } else {
           store.commit(ADD_PROJECT, nameProject.value);
           nameProject.value = "";
+          notify(
+            typeNotification.SUCCESS,
+            "Projeto Adicionado",
+            "Seu projeto foi adicionado com sucesso!"
+          );
         }
-        store.commit(NOTIFICATION, {
-          title: "Novo Projeto salvo",
-          text: "Pronto! Seu projeto já esta disponível",
-          type: typeNotification.SUCCESS,
-        });
         router.push("/projects");
       }
     };
@@ -72,11 +75,11 @@ export default defineComponent({
         const project = (store.state.projects as IProjects[]).find(
           (project) => project.id === props.id
         );
-        store.commit(NOTIFICATION, {
-          title: "Cuidado",
-          text: "Seu projeto esta sendo editado!",
-          type: typeNotification.ATTENTION,
-        });
+        notify(
+          typeNotification.ATTENTION,
+          "Cuidado",
+          "Seu projeto esta sendo editado!"
+        );
         nameProject.value = project?.name || "";
       }
     });
