@@ -1,0 +1,1 @@
+import{d as t,_ as s,c as r,a as n,e as a,f as c,o as p}from"./index-CSXoJ6jp.js";const i=t({name:"Project"}),_={class:"container p-[1.25rem] project-container"};function d(m,e,f,l,u,j){const o=c("router-view");return p(),r("div",_,[e[0]||(e[0]=n("h1",{class:"title"},"Projetos",-1)),a(o)])}const $=s(i,[["render",d]]);export{$ as default};
