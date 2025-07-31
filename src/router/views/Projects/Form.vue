@@ -24,7 +24,7 @@ import { useStore } from "@/store/index";
 import { useRouter } from "vue-router";
 import type IProjects from "@/interfaces/IProjects";
 import { useNotify } from "@/hooks/notify";
-import { ADD_PROJECT, CHANGE_PROJECT } from "@/store/type-mutations";
+import { CHANGE_PROJECT, REGISTER_PROJECTS } from "@/store/type-actions";
 import { typeNotification } from "@/interfaces/INotificationMessage";
 export default defineComponent({
   name: "Form",
@@ -49,23 +49,28 @@ export default defineComponent({
       } else {
         if (props.id) {
           // Editar Projeto
-          store.commit(CHANGE_PROJECT, {
-            id: props.id,
-            name: nameProject.value,
-          });
-          notify(
-            typeNotification.SUCCESS,
-            "Projeto Editado",
-            "Seu projeto foi editado com sucesso!"
-          );
+          store
+            .dispatch(CHANGE_PROJECT, {
+              id: props.id,
+              name: nameProject.value,
+            })
+            .then(() => {
+              notify(
+                typeNotification.SUCCESS,
+                "Projeto Editado",
+                "Seu projeto foi editado com sucesso!"
+              );
+            });
         } else {
-          store.commit(ADD_PROJECT, nameProject.value);
-          nameProject.value = "";
-          notify(
-            typeNotification.SUCCESS,
-            "Projeto Adicionado",
-            "Seu projeto foi adicionado com sucesso!"
-          );
+          // travalhando com a aixos no store, usando assincro de REGISTER_PROJECTS, vai pegar o parametro de contexto e o nameProject
+          store.dispatch(REGISTER_PROJECTS, nameProject.value).then(() => {
+            nameProject.value = "";
+            notify(
+              typeNotification.SUCCESS,
+              "Projeto Adicionado",
+              "Seu projeto foi adicionado com sucesso!"
+            );
+          });
         }
         router.push("/projects");
       }

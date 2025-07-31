@@ -42,7 +42,7 @@ import { defineComponent } from "vue";
 import { useNotify } from "@/hooks/notify";
 import { typeNotification } from "@/interfaces/INotificationMessage";
 import { store } from "@/store";
-import { DELETE_PROJECT } from "@/store/type-mutations";
+import { DELETE_PROJECT } from "@/store/type-actions";
 import type IProjects from "@/interfaces/IProjects";
 
 export default defineComponent({
@@ -56,12 +56,13 @@ export default defineComponent({
     const { notify } = useNotify();
 
     const deleteProject = (id: string) => {
-      store.commit(DELETE_PROJECT, id);
-      notify(
-        typeNotification.SUCCESS,
-        "Projeto Deletado!",
-        "O Projeto foi deletado com sucesso"
-      );
+      store.dispatch(DELETE_PROJECT, id).then(() => {
+        notify(
+          typeNotification.SUCCESS,
+          "Projeto Deletado!",
+          "O Projeto foi deletado com sucesso"
+        );
+      });
     };
 
     return { deleteProject };
