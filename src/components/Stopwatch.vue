@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="grid">
     <strong class="stopwatchText">{{ timerString }}</strong>
   </section>
 </template>

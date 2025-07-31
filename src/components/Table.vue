@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <table class="table_main">
       <thead class="bg-gray-100">
         <tr>

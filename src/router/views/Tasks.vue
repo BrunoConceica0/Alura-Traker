@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Form @isSalveTask="salveTask" />
-    <div v-if="listTasks.length">
+    <div v-if="listTasks.length" class="">
       <TasksItems
         v-for="(task, index) in listTasks"
         :key="index"
