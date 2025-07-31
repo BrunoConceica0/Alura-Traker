@@ -1,5 +1,5 @@
 <template>
-  <TaskEmpyt>
+  <TasksEmpt>
     <div class="task box">
       <div class="w-7/12">{{ task.description || "Tarefa sem descrição" }}</div>
       <div class="flex w-1/2">
@@ -9,7 +9,7 @@
         <Stopwatch :timerString="formatTime(task.durationInSeconds)" />
       </div>
     </div>
-  </TaskEmpyt>
+  </TasksEmpt>
 </template>
 
 <script lang="ts">
@@ -17,7 +17,7 @@ import { defineComponent } from "vue";
 import Stopwatch from "./Stopwatch.vue";
 import type ITask from "@/interfaces/ITask";
 import formatTime from "@/utils/FormatTime";
-import TaskEmpyt from "./TaskEmpyt.vue";
+import TasksEmpt from "./TasksEmpty.vue";
 
 export default defineComponent({
   name: "Tasks",
@@ -29,7 +29,7 @@ export default defineComponent({
     },
   },
   setup() {
-    return { formatTime, TaskEmpyt };
+    return { formatTime, TasksEmpt };
   },
 });
 </script>

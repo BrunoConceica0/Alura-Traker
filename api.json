@@ -1,3 +1,37 @@
 {
-  "project": []
+  "project": [
+    {
+      "id": "58bf",
+      "name": "asd"
+    },
+    {
+      "id": "decf",
+      "name": "aaa"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "durationInSeconds": 120,
+      "description": "aa",
+      "project": {
+        "id": "58bf",
+        "name": "asd"
+      }
+    },
+    {
+      "id": "4701",
+      "durationInSeconds": 2,
+      "description": "aasdad"
+    },
+    {
+      "id": "2ca6",
+      "durationInSeconds": 2,
+      "description": "asda",
+      "projects": {
+        "id": "58bf",
+        "name": "asd"
+      }
+    }
+  ]
 }

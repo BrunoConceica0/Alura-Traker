@@ -6,23 +6,30 @@ import {
   NOTIFICATION,
   SET_PROJECTS,
   DELETE_PROJECTS,
+  SET_TASKS,
+  ADD_TASKS,
 } from "./type-mutations";
 import {
   GET_PROJECTS,
   REGISTER_PROJECTS,
   CHANGE_PROJECT,
   DELETE_PROJECT,
+  GET_TASKS,
+  REGISTER_TASKS,
 } from "./type-actions";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import http from "@/http/index";
+import type ITask from "@/interfaces/ITask";
 interface State {
   projects: IProjects[];
   notification: INotificationMessage[];
+  tasks: ITask[];
 }
 
 export const key: InjectionKey<Store<State>> = Symbol("store");
 export const store = createStore<State>({
   state: {
+    tasks: [],
     projects: [],
     notification: [],
   },
@@ -47,6 +54,12 @@ export const store = createStore<State>({
 
     [SET_PROJECTS](state: State, projects: IProjects[]) {
       state.projects = projects;
+    },
+    [SET_TASKS](state: State, tasks: ITask[]) {
+      state.tasks = tasks;
+    },
+    [ADD_TASKS](state: State, listTasks: ITask) {
+      state.tasks.push(listTasks);
     },
     [NOTIFICATION](state: State, newNotification: INotificationMessage) {
       state.notification.push(newNotification);
@@ -74,6 +87,14 @@ export const store = createStore<State>({
       return http.delete(`/project/${id}`).then(() => {
         commit(DELETE_PROJECTS, id);
       });
+    },
+    [GET_TASKS]({ commit }) {
+      http.get("tasks").then((r) => commit(SET_TASKS, r.data));
+    },
+    [REGISTER_TASKS]({ commit }, listTasks: ITask) {
+      return http
+        .post(`/tasks`, listTasks)
+        .then((r) => commit(ADD_TASKS, r.data));
     },
   },
 });
