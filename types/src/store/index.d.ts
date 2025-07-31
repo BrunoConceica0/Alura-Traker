@@ -1,5 +1,5 @@
-import type IProjects from "../interfaces/IProjects";
-import type INotificationMessage from "../interfaces/INotificationMessage";
+import type IProjects from "@/interfaces/IProjects";
+import type INotificationMessage from "@/interfaces/INotificationMessage";
 import type { InjectionKey } from "vue";
 import { Store } from "vuex";
 interface State {

@@ -23,7 +23,6 @@ export default defineComponent({
   setup() {
     const store = useStore();
     // Lista de projetos
-
     store.dispatch(GET_PROJECTS);
 
     const listProjects = computed(() => {

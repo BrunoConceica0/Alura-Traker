@@ -3,3 +3,6 @@ export const REGISTER_PROJECTS = "REGISTER_PROJECTS";
 export const ADD_PROJECT = "ADD_PROJECT";
 export const CHANGE_PROJECT = "CHANGE_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJEC";
+
+export const GET_TASKS = "GET_TASKS ";
+export const REGISTER_TASKS = "REGISTER_TASKS ";
