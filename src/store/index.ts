@@ -1,13 +1,20 @@
-import type IProjects from "../interfaces/IProjects";
-import type INotificationMessage from "../interfaces/INotificationMessage";
+import type IProjects from "@/interfaces/IProjects";
+import type INotificationMessage from "@/interfaces/INotificationMessage";
 import type { InjectionKey } from "vue";
 import {
   ADD_PROJECT,
+  NOTIFICATION,
+  SET_PROJECTS,
+  DELETE_PROJECTS,
+} from "./type-mutations";
+import {
+  GET_PROJECTS,
+  REGISTER_PROJECTS,
   CHANGE_PROJECT,
   DELETE_PROJECT,
-  NOTIFICATION,
-} from "./type-mutations";
+} from "./type-actions";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
+import http from "@/http/index";
 interface State {
   projects: IProjects[];
   notification: INotificationMessage[];
@@ -37,6 +44,10 @@ export const store = createStore<State>({
     [DELETE_PROJECT](state: State, id: string) {
       state.projects = state.projects.filter((p) => p.id !== id);
     },
+
+    [SET_PROJECTS](state: State, projects: IProjects[]) {
+      state.projects = projects;
+    },
     [NOTIFICATION](state: State, newNotification: INotificationMessage) {
       state.notification.push(newNotification);
       // Para remove o alert
@@ -46,6 +57,23 @@ export const store = createStore<State>({
           (n) => n.id !== newNotification.id
         );
       }, 3000);
+    },
+  },
+  actions: {
+    // Assicrona com axios para trabalha com api usando o commit
+    [GET_PROJECTS]({ commit }) {
+      http.get("project").then((r) => commit(SET_PROJECTS, r.data));
+    },
+    [REGISTER_PROJECTS](context, nameProject: string) {
+      return http.post("/project", { name: nameProject });
+    },
+    [CHANGE_PROJECT](context, project: IProjects) {
+      return http.put(`/project/${project.id}`, project);
+    },
+    [DELETE_PROJECT]({ commit }, id: string) {
+      return http.delete(`/project/${id}`).then(() => {
+        commit(DELETE_PROJECTS, id);
+      });
     },
   },
 });

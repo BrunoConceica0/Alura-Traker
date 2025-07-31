@@ -1,4 +1,6 @@
-export const DELETE_PROJECT = "DELETE_PROJEC";
-export const CHANGE_PROJECT = "CHANGE_PROJECT";
 export const ADD_PROJECT = "ADD_PROJECT";
 export const NOTIFICATION = "NOTIFICATION";
+export const DELETE_PROJECTS = "DELETE_PROJECTS";
+
+//Axios
+export const SET_PROJECTS = "SET_PROJECTS";

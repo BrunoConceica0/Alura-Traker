@@ -14,6 +14,7 @@ import { computed, defineComponent } from "vue";
 import Table from "@/components/Table.vue";
 import Form from "@/router/views/Projects/Form.vue";
 import { useStore } from "@/store/index";
+import { GET_PROJECTS } from "@/store/type-actions";
 
 export default defineComponent({
   name: "List",
@@ -22,6 +23,8 @@ export default defineComponent({
   setup() {
     const store = useStore();
     // Lista de projetos
+
+    store.dispatch(GET_PROJECTS);
 
     const listProjects = computed(() => {
       return store.state.projects;
