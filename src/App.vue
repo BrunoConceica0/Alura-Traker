@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <main
-      class="flex flex-wrap gap-0"
-      :class="{ 'theme-dark': themeDarkActive }"
-    >
-      <div class="flex w-1/4 h-screen">
+    <main class="main-container" :class="{ 'theme-dark': themeDarkActive }">
+      <div class="flex w-1/4 h-screen max-2xl:h-auto max-2xl:w-full">
         <Sidebar @theme-changed="themeChanged" />
       </div>
       <Notification />

@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <form
-      class="p-4 grid grid-cols-[3fr_1fr_1fr]"
+      class="p-4 grid grid-cols-[3fr_1fr_1fr] max-lg:m-auto max-lg:grid-cols-2 max-lg:justify-center-center max-lg:gap-2"
       aria-label="Formulário para criação de uma nova tarefa."
     >
       <input

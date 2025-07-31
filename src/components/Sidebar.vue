@@ -3,7 +3,7 @@
     <h1>
       <img
         src="../assets/logo.png"
-        class="w-full h-full block object-cover object-center"
+        class="w-full block object-cover object-center"
         alt="Logo da Alura Tracker"
       />
     </h1>
