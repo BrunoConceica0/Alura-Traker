@@ -2,25 +2,17 @@
   <div
     class="fixed inset-0 bg-gray-950/60 bg-opacity-50 flex items-center justify-center z-50"
   >
-    <!-- Modal Card -->
     <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
-      <!-- Close Button -->
       <button
         @click="$emit('close')"
         class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 cursor-pointer"
       >
         &times;
       </button>
-
-      <!-- Modal Title -->
       <h2 class="text-xl font-semibold mb-4">Detalhes da Tarefa</h2>
-
-      <!-- Modal Content -->
       <p class="text-gray-700 mb-6">
         {{ task?.description || "Nenhuma descrição disponível." }}
       </p>
-
-      <!-- Modal Actions -->
       <div class="flex justify-end space-x-2">
         <button
           @click="$emit('close')"
