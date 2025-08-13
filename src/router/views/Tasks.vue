@@ -9,16 +9,15 @@
         @click="openModal(task)"
       />
     </div>
-    <TasksEmpty v-else @click.stop
-      >Você não está muito produtivo hoje :(</TasksEmpty
-    >
+    <TasksEmpty v-else @click.stop>
+      Você não está muito produtivo hoje :(
+    </TasksEmpty>
 
     <Modal v-if="selectedTask" :task="selectedTask" @close="closeModal" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+<script lang="ts" setup>
 import Form from "@/components/Form.vue";
 import TasksItems from "@/components/TasksItems.vue";
 import TasksEmpty from "@/components/TasksEmpty.vue";
@@ -26,38 +25,27 @@ import Modal from "@/components/Modal.vue";
 import { useStore } from "@/store/index";
 import type ITask from "@/interfaces/ITask";
 import { GET_PROJECTS, GET_TASKS, REGISTER_TASKS } from "@/store/type-actions";
+import { computed, ref } from "vue";
 
-export default defineComponent({
-  components: { Form, TasksItems, TasksEmpty, Modal },
-  name: "Tasks",
-  setup() {
-    const store = useStore();
-    const selectedTask = ref<ITask | null>(null);
+defineOptions({ name: "Tasks" });
 
-    store.dispatch(GET_PROJECTS);
-    store.dispatch(GET_TASKS);
+const store = useStore();
+const selectedTask = ref<ITask | null>(null);
 
-    const listTasks = computed(() => store.state.tasks);
+store.dispatch(GET_PROJECTS);
+store.dispatch(GET_TASKS);
 
-    const salveTask = (task: ITask) => {
-      store.dispatch(REGISTER_TASKS, task);
-    };
+const listTasks = computed(() => store.state.tasks);
 
-    const openModal = (task: ITask) => {
-      selectedTask.value = task;
-    };
+const salveTask = (task: ITask) => {
+  store.dispatch(REGISTER_TASKS, task);
+};
 
-    const closeModal = () => {
-      selectedTask.value = null;
-    };
+const openModal = (task: ITask) => {
+  selectedTask.value = task;
+};
 
-    return {
-      listTasks,
-      salveTask,
-      selectedTask,
-      openModal,
-      closeModal,
-    };
-  },
-});
+const closeModal = () => {
+  selectedTask.value = null;
+};
 </script>
