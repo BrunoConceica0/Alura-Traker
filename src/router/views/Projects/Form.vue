@@ -1,17 +1,11 @@
 <template>
   <form @submit.prevent="salveProject">
-    <div class="mb-4 relative">
-      <label for="nomeProject" id="nomeProject" class="project-label">
-        Nome do Projeto
-      </label>
-      <input
-        type="text"
-        id="nomeProject"
-        v-model="nameProject"
-        placeholder="Digite seu projeto"
-        class="project-input"
-      />
-    </div>
+    <Input
+      text="Digite seu projeto"
+      subtlite="Edite a sua tarefa"
+      id="nameProject"
+      :modalValue="nameProject"
+    />
     <div class="mb-4 relative">
       <button type="submit" class="btnBox">Salvar</button>
     </div>
@@ -26,6 +20,7 @@ import type IProjects from "@/interfaces/IProjects";
 import { useNotify } from "@/hooks/notify";
 import { CHANGE_PROJECT, REGISTER_PROJECTS } from "@/store/type-actions";
 import { typeNotification } from "@/interfaces/INotificationMessage";
+import Input from "@/components/Input.vue";
 export default defineComponent({
   name: "Form",
   props: {

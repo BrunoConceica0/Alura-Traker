@@ -9,17 +9,15 @@
       @click="handleOverlayClick"
       @keydown.esc="closeModal"
     >
-      <!-- Modal Container -->
       <div
         ref="modalRef"
         class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative transform transition-all duration-200 ease-out"
         role="document"
         @click.stop
       >
-        <!-- Header com botão de fechar -->
         <header class="flex items-center justify-between mb-4">
           <h2 id="modal-title" class="text-xl font-semibold text-gray-900">
-            Detalhes da Tarefa
+            Editando Tarefa
           </h2>
 
           <button
@@ -46,49 +44,28 @@
             </svg>
           </button>
         </header>
-
-        <main>
-          <p id="modal-description" class="text-gray-700 mb-6 leading-relaxed">
-            {{
-              task?.description ||
-              "Nenhuma descrição disponível para esta tarefa."
-            }}
-          </p>
-
-          <div
-            v-if="task?.projects?.name || task?.durationInSeconds"
-            class="bg-gray-50 rounded-lg p-3 mb-6 space-y-2"
-          >
-            <dl class="space-y-1">
-              <div v-if="task?.projects?.name">
-                <dt class="text-sm font-medium text-gray-500">Projeto:</dt>
-                <dd class="text-sm text-gray-900">{{ task.projects.name }}</dd>
-              </div>
-              <div v-if="task?.durationInSeconds">
-                <dt class="text-sm font-medium text-gray-500">Duração:</dt>
-                <dd class="text-sm text-gray-900">
-                  {{ formatDuration(task.durationInSeconds) }}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </main>
+        <Input
+          text="Edite a sua tarefa"
+          subtlite="Nome da tarefa"
+          id="nameTask"
+          :modalValue="task?.description"
+        />
         <footer
           class="flex justify-end space-x-3 pt-4 border-t border-gray-200"
         >
+          <button
+            type="button"
+            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            @click="confirmAction"
+          >
+            Salva alterações
+          </button>
           <button
             type="button"
             class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
             @click="closeModal"
           >
             Cancelar
-          </button>
-          <button
-            type="button"
-            class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-            @click="confirmAction"
-          >
-            Confirmar
           </button>
         </footer>
       </div>
@@ -99,6 +76,8 @@
 <script lang="ts" setup>
 import { ref, nextTick, onMounted, onUnmounted } from "vue";
 import type ITask from "@/interfaces/ITask";
+import Tasks from "@/router/views/Tasks.vue";
+import Input from "@/components/Input.vue";
 
 defineProps<{
   task: ITask;
@@ -116,6 +95,7 @@ let previousActiveElement: Element | null = null;
 
 const closeModal = (): void => {
   emit("close");
+  Tasks.value = null;
 };
 
 const confirmAction = (): void => {
@@ -140,7 +120,6 @@ const formatDuration = (seconds: number): string => {
   return parts.join(" ");
 };
 
-// Gerenciamento de foco para acessibilidade
 const trapFocus = (event: KeyboardEvent): void => {
   if (!modalRef.value) return;
 
