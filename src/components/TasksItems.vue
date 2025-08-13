@@ -10,24 +10,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
 import Stopwatch from "./Stopwatch.vue";
 import type ITask from "@/interfaces/ITask";
 import formatTime from "@/utils/FormatTime";
-import TasksEmpt from "./TasksEmpty.vue";
 
-export default defineComponent({
-  name: "TasksItems",
-  components: { Stopwatch },
-  props: {
-    task: {
-      type: Object as () => ITask,
-      required: true,
-    },
-  },
-  setup() {
-    return { formatTime, TasksEmpt };
+defineOptions({ name: "TasksItems" });
+
+defineProps({
+  task: {
+    type: Object as () => ITask,
+    required: true,
   },
 });
 </script>
