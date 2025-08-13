@@ -1,7 +1,7 @@
 <template>
-  <div class="container" @click="modal">
-    <Form @isSalveTask="salveTask" />
-    <div v-if="listTasks.length">
+  <div class="container" @click="closeModal">
+    <Form @isSalveTask="salveTask" @click.stop />
+    <div v-if="listTasks.length" @click.stop>
       <TasksItems
         v-for="(task, index) in listTasks"
         :key="index"
@@ -9,7 +9,9 @@
         @click="openModal(task)"
       />
     </div>
-    <TasksEmpty v-else>Você não está muito produtivo hoje :(</TasksEmpty>
+    <TasksEmpty v-else @click.stop
+      >Você não está muito produtivo hoje :(</TasksEmpty
+    >
 
     <Modal v-if="selectedTask" :task="selectedTask" @close="closeModal" />
   </div>
@@ -41,11 +43,6 @@ export default defineComponent({
       store.dispatch(REGISTER_TASKS, task);
     };
 
-    const modal = () => void {
-
-
-      
-    };
     const openModal = (task: ITask) => {
       selectedTask.value = task;
     };
@@ -60,7 +57,6 @@ export default defineComponent({
       selectedTask,
       openModal,
       closeModal,
-      modal,
     };
   },
 });

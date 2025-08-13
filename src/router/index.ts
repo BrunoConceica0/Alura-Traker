@@ -23,7 +23,7 @@ const routes = [
         component: () => import("./views/Projects/Form.vue"),
       },
       {
-        path: "/:id",
+        path: ":id",
         name: "Edit project",
         props: true,
         component: () => import("./views/Projects/Form.vue"),

@@ -20,6 +20,7 @@ import {
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import http from "@/http/index";
 import type ITask from "@/interfaces/ITask";
+
 interface State {
   projects: IProjects[];
   notification: INotificationMessage[];
@@ -48,7 +49,7 @@ export const store = createStore<State>({
         state.projects[index] = project;
       }
     },
-    [DELETE_PROJECT](state: State, id: string) {
+    [DELETE_PROJECTS](state: State, id: string) {
       state.projects = state.projects.filter((p) => p.id !== id);
     },
 
@@ -73,7 +74,6 @@ export const store = createStore<State>({
     },
   },
   actions: {
-    // Assicrona com axios para trabalha com api usando o commit
     [GET_PROJECTS]({ commit }) {
       http.get("project").then((r) => commit(SET_PROJECTS, r.data));
     },

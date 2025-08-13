@@ -1,15 +1,13 @@
 <template>
-  <TasksEmpt>
-    <div class="task box">
-      <div class="w-7/12">{{ task.description || "Tarefa sem descrição" }}</div>
-      <div class="flex w-1/2">
-        {{ task.projects?.name || "N/D" }}
-      </div>
-      <div>
-        <Stopwatch :timerString="formatTime(task.durationInSeconds)" />
-      </div>
+  <div class="task box">
+    <div class="w-7/12">{{ task.description || "Tarefa sem descrição" }}</div>
+    <div class="flex w-1/2">
+      {{ task.projects?.name || "N/D" }}
     </div>
-  </TasksEmpt>
+    <div>
+      <Stopwatch :timerString="formatTime(task.durationInSeconds)" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,7 +18,7 @@ import formatTime from "@/utils/FormatTime";
 import TasksEmpt from "./TasksEmpty.vue";
 
 export default defineComponent({
-  name: "Tasks",
+  name: "TasksItems",
   components: { Stopwatch },
   props: {
     task: {
