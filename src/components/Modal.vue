@@ -73,8 +73,6 @@
             </dl>
           </div>
         </main>
-
-        <!-- Footer com ações -->
         <footer
           class="flex justify-end space-x-3 pt-4 border-t border-gray-200"
         >
@@ -85,7 +83,6 @@
           >
             Cancelar
           </button>
-
           <button
             type="button"
             class="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
@@ -126,7 +123,6 @@ const confirmAction = (): void => {
 };
 
 const handleOverlayClick = (event: Event): void => {
-  // Fechar modal apenas se clicar no overlay, não no conteúdo
   if (event.target === event.currentTarget) {
     closeModal();
   }
@@ -141,7 +137,6 @@ const formatDuration = (seconds: number): string => {
   if (hours > 0) parts.push(`${hours}h`);
   if (minutes > 0) parts.push(`${minutes}m`);
   if (secs > 0 || parts.length === 0) parts.push(`${secs}s`);
-
   return parts.join(" ");
 };
 
@@ -160,13 +155,11 @@ const trapFocus = (event: KeyboardEvent): void => {
 
   if (event.key === "Tab") {
     if (event.shiftKey) {
-      // Shift + Tab - volta para o último elemento se estiver no primeiro
       if (document.activeElement === firstElement) {
         lastElement.focus();
         event.preventDefault();
       }
     } else {
-      // Tab - vai para o primeiro elemento se estiver no último
       if (document.activeElement === lastElement) {
         firstElement.focus();
         event.preventDefault();
@@ -175,30 +168,17 @@ const trapFocus = (event: KeyboardEvent): void => {
   }
 };
 
-// Lifecycle hooks
 onMounted(async () => {
-  // Salvar elemento que tinha foco antes do modal
   previousActiveElement = document.activeElement;
-
-  // Focar no botão de fechar após o modal aparecer
   await nextTick();
   closeButtonRef.value?.focus();
-
-  // Adicionar listener para trap de foco
   document.addEventListener("keydown", trapFocus);
-
-  // Prevenir scroll do body
   document.body.style.overflow = "hidden";
 });
 
 onUnmounted(() => {
-  // Remover listener
   document.removeEventListener("keydown", trapFocus);
-
-  // Restaurar scroll do body
   document.body.style.overflow = "";
-
-  // Restaurar foco para elemento anterior
   if (previousActiveElement instanceof HTMLElement) {
     previousActiveElement.focus();
   }
@@ -206,7 +186,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Animações suaves para entrada/saída do modal */
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.2s ease;
